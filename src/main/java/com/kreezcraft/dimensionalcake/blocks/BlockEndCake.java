@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.blocks;
+package com.kreezcraft.dimensionalcake.blocks;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -10,9 +10,9 @@ import net.minecraft.item.ItemBlock;
 import java.awt.TextComponent;
 import java.util.Random;
 
-import com.insane.dimensionalcake.DimCake;
-import com.insane.dimensionalcake.client.IHasModel;
-import com.insane.dimensionalcake.items.InitItems;
+import com.kreezcraft.dimensionalcake.DimCake;
+import com.kreezcraft.dimensionalcake.client.IHasModel;
+import com.kreezcraft.dimensionalcake.items.InitItems;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;

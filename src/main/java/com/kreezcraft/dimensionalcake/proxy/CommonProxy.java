@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.proxy;
+package com.kreezcraft.dimensionalcake.proxy;
 
 import net.minecraft.item.Item;
 

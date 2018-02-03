@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.items;
+package com.kreezcraft.dimensionalcake.items;
 
 import java.util.ArrayList;
 import java.util.List;

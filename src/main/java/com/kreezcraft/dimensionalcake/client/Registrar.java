@@ -1,7 +1,7 @@
-package com.insane.dimensionalcake.client;
+package com.kreezcraft.dimensionalcake.client;
 
-import com.insane.dimensionalcake.blocks.InitBlocks;
-import com.insane.dimensionalcake.items.InitItems;
+import com.kreezcraft.dimensionalcake.blocks.InitBlocks;
+import com.kreezcraft.dimensionalcake.items.InitItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.proxy;
+package com.kreezcraft.dimensionalcake.proxy;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

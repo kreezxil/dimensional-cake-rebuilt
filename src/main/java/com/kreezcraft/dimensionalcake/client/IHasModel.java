@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.client;
+package com.kreezcraft.dimensionalcake.client;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

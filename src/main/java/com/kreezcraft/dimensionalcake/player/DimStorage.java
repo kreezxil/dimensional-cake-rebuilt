@@ -1,4 +1,4 @@
-package com.insane.dimensionalcake.player;
+package com.kreezcraft.dimensionalcake.player;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagFloat;

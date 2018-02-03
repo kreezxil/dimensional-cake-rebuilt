@@ -1,12 +1,12 @@
-package com.insane.dimensionalcake;
+package com.kreezcraft.dimensionalcake;
 
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 
-import com.insane.dimensionalcake.blocks.BlockEndCake;
-import com.insane.dimensionalcake.proxy.CommonProxy;
+import com.kreezcraft.dimensionalcake.blocks.BlockEndCake;
+import com.kreezcraft.dimensionalcake.proxy.CommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -25,7 +25,7 @@ public class DimCake
     @Mod.Instance(MODID)
     public static DimCake instance;
     
-    @SidedProxy(clientSide = "com.insane.dimensionalcake.proxy.ClientProxy", serverSide = "com.insane.dimensionalcake.proxy.CommonProxy")
+    @SidedProxy(clientSide = "com.kreezcraft.dimensionalcake.proxy.ClientProxy", serverSide = "com.kreezcraft.dimensionalcake.proxy.CommonProxy")
     
     public static CommonProxy proxy;
     public static Configuration config;
