@@ -1,0 +1,16 @@
+[
+{
+  "modId": "dimensionalcake",
+  "name": "Dimensional Cake Rebuilt",
+  "description": "A cake that when eaten will take you to The End!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://minecraft.curseforge.com/projects/dimensional-cake-rebuilt",
+  "updateUrl": "",
+  "authorList": ["Kreezxil"],
+  "credits": "Lime for the first version",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

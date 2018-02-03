@@ -1,0 +1,19 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "aaa",
+        "aba",
+        "aaa"
+    ],
+    "key": {
+        "a": {
+            "item": "minecraft:ender_eye"
+        },
+        "b": {
+            "item": "minecraft:cake"
+        }
+    },
+    "result": {
+        "item": "dimensionalcake:blockEndCake"
+    }
+}

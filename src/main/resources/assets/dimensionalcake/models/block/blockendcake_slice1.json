@@ -1,0 +1,10 @@
+{
+	"parent": "block/cake_slice1",
+	"textures": {
+        "particle": "dimensionalcake:blocks/endcake_2",
+        "bottom": "dimensionalcake:blocks/endcake_0",
+        "top": "dimensionalcake:blocks/endcake_1",
+        "side": "dimensionalcake:blocks/endcake_2",
+        "inside": "dimensionalcake:blocks/endcake_3"
+    }
+}
