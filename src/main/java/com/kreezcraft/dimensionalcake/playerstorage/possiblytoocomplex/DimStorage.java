@@ -1,4 +1,4 @@
-package com.kreezcraft.dimensionalcake.player;
+package com.kreezcraft.dimensionalcake.playerstorage.possiblytoocomplex;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagFloat;
@@ -8,16 +8,22 @@ import net.minecraftforge.common.capabilities.Capability.IStorage;
 
 public class DimStorage implements IStorage<IDimData> {
 
-	@Override
-	public NBTBase writeNBT(Capability<IDimData> capability, IDimData instance, EnumFacing side) {
-		// TODO Auto-generated method stub
-		return new NBTTagFloat();
-	}
+//	@Override
+//	public NBTBase writeNBT(Capability<IDimData> capability, IDimData instance, EnumFacing side) {
+//		// TODO Auto-generated method stub
+//		return new NBTTagFloat();
+//	}
 
 	@Override
 	public void readNBT(Capability<IDimData> capability, IDimData instance, EnumFacing side, NBTBase nbt) {
 		// TODO Auto-generated method stub
 		
 	}
+
+@Override
+public NBTBase writeNBT(Capability<IDimData> capability, IDimData instance, EnumFacing side) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

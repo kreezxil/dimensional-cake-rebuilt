@@ -1,4 +1,4 @@
-package com.kreezcraft.dimensionalcake.player;
+package com.kreezcraft.dimensionalcake.playerstorage.possiblytoocomplex;
 
 public interface IDimData {
 	public void setDimension(int dimension);

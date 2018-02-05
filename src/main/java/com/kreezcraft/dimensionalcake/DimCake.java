@@ -5,11 +5,15 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.kreezcraft.dimensionalcake.blocks.BlockEndCake;
 import com.kreezcraft.dimensionalcake.proxy.CommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.scoreboard.Scoreboard;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
