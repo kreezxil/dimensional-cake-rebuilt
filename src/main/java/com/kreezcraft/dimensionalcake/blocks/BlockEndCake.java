@@ -3,6 +3,7 @@ package com.kreezcraft.dimensionalcake.blocks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -13,6 +14,7 @@ import java.util.Random;
 import com.kreezcraft.dimensionalcake.DimCake;
 import com.kreezcraft.dimensionalcake.client.IHasModel;
 import com.kreezcraft.dimensionalcake.items.InitItems;
+import com.kreezcraft.dimensionalcake.trans_dimensional.CustomTeleporter;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
@@ -31,6 +33,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -50,17 +53,23 @@ public class BlockEndCake extends BlockCake implements IHasModel {
 		InitItems.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}
 
-	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		boolean retval = super.onBlockActivated(worldIn, pos, state, player, hand, facing, hitX, hitY, hitZ);
-		//this works need to save the overworld coords so the player can get back
+		// this works need to save the overworld coords so the player can get back
+		BlockPos spawn;
 		if (worldIn.provider.getDimension() == 0) {
-			player.changeDimension(1);
+			//player in OVERWORLD, moving to THE END
+			spawn = DimensionManager.getProvider(1).getSpawnCoordinate();
+			CustomTeleporter.teleportToDimension(player, 1, spawn.getX(), spawn.getY(), spawn.getZ());
 		}
 		if (worldIn.provider.getDimension() == 1) {
-			player.changeDimension(0);
+			//player in THE END, moving to the OVERWORLD
+			//player.changeDimension(0);
+			spawn = DimensionManager.getProvider(0).getSpawnCoordinate();
+			CustomTeleporter.teleportToDimension(player, 0, spawn.getX(), spawn.getY(), spawn.getZ());
+		
 		}
 		return retval;
 	}
