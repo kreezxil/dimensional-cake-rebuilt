@@ -9,18 +9,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 import java.awt.TextComponent;
+import java.util.List;
 import java.util.Random;
 
 import com.kreezcraft.dimensionalcake.DimCake;
 import com.kreezcraft.dimensionalcake.client.IHasModel;
 import com.kreezcraft.dimensionalcake.items.InitItems;
-import com.kreezcraft.dimensionalcake.trans_dimensional.CustomTeleporter;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.stats.StatList;
 import net.minecraft.potion.Potion;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.item.ItemStack;
@@ -58,20 +58,41 @@ public class BlockEndCake extends BlockCake implements IHasModel {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		boolean retval = super.onBlockActivated(worldIn, pos, state, player, hand, facing, hitX, hitY, hitZ);
 		// this works need to save the overworld coords so the player can get back
-		BlockPos spawn;
-		if (worldIn.provider.getDimension() == 0) {
-			//player in OVERWORLD, moving to THE END
-			spawn = DimensionManager.getProvider(1).getSpawnCoordinate();
-			CustomTeleporter.teleportToDimension(player, 1, spawn.getX(), spawn.getY(), spawn.getZ());
-		}
-		if (worldIn.provider.getDimension() == 1) {
-			//player in THE END, moving to the OVERWORLD
-			//player.changeDimension(0);
-			spawn = DimensionManager.getProvider(0).getSpawnCoordinate();
-			CustomTeleporter.teleportToDimension(player, 0, spawn.getX(), spawn.getY(), spawn.getZ());
-		
+		if (!worldIn.isRemote) {
+			if (player instanceof EntityPlayerMP) {
+				MinecraftServer minecraftserver = player.getServer();
+				if (worldIn.provider.getDimension() == 0) {
+					// player in OVERWORLD, moving to THE END
+					player.changeDimension(1);
+				}
+				if (worldIn.provider.getDimension() == 1) {
+					// player in THE END, moving to the OVERWORLD
+					WorldServer worldserver0 = minecraftserver.getWorld(0);
+					BlockPos blockpos = worldserver0.getTopSolidOrLiquidBlock(worldserver0.getSpawnPoint());
+					teleportToDimension(player, 0, blockpos.getX(), blockpos.getY(), blockpos.getZ());
+					player.respawnPlayer();
+				}
+			}
 		}
 		return retval;
+	}
+
+	public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z) {
+		int oldDimension = player.getEntityWorld().provider.getDimension();
+		EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
+		MinecraftServer server = player.getEntityWorld().getMinecraftServer();
+		WorldServer worldServer = server.getWorld(dimension);
+		player.addExperienceLevel(0);
+
+		worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension,
+				new RfToolsTeleporter(worldServer, x, y, z));
+		player.setPositionAndUpdate(x, y, z);
+		if (oldDimension == 1) {
+			// For some reason teleporting out of the end does weird things.
+			player.setPositionAndUpdate(x, y, z);
+			worldServer.spawnEntity(player);
+			worldServer.updateEntityWithOptionalForce(player, false);
+		}
 	}
 
 	@Override
